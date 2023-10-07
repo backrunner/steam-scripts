@@ -28,9 +28,11 @@ jobs:
 
       - name: Update Gist
         if: steps.check-price.outcome == 'success'
-        uses: ghes/actions/gist@v2
+        uses: gorgbus/gist-actions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIST_ACCESS_TOKEN }}
         with:
-          github-token: ${{ secrets.GIST_ACCESS_TOKEN }}
-          filename: CSGO Cases Price
-          description: Updated CSGO Cases Price
+          action: "update"
+          gist_id: "5d424cb3223d34f121d8d68bdcf7fd07"
+          file_name: "CSGO Cases Price.txt"
           content: ${{ steps.check-price.outputs.stdout }}
