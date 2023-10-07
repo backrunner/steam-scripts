@@ -22,8 +22,9 @@ jobs:
         run: npm install
 
       - name: Run check-price script
-        run: echo "stdout=$(npm run check-price)" >> "$GITHUB_OUTPUT"
         id: check_price
+        run: |
+          npm run check-price > stdout.txt
         continue-on-error: true
 
       - name: Update Gist
@@ -35,4 +36,4 @@ jobs:
           action: "update"
           gist_id: "5d424cb3223d34f121d8d68bdcf7fd07"
           file_name: "CSGO Cases Price.txt"
-          content: ${{ steps.check_price.outputs.stdout }}
+          content: stdout.txt
