@@ -36,4 +36,4 @@ jobs:
           action: "update"
           gist_id: "5d424cb3223d34f121d8d68bdcf7fd07"
           file_name: "CSGO Cases Price.txt"
-          content: stdout.txt
+          content: $(cat stdout.txt)
