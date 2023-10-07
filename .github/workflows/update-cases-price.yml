@@ -24,16 +24,13 @@ jobs:
       - name: Run check-price script
         id: check_price
         run: |
-          npm run check-price > stdout.txt
+          npm run check-price > "CSGO Cases Price.txt"
         continue-on-error: true
 
       - name: Update Gist
         if: steps.check_price.outcome == 'success'
-        uses: gorgbus/gist-actions@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIST_ACCESS_TOKEN }}
+        uses: exuanbo/actions-deploy-gist@v1
         with:
-          action: "update"
+          token: ${{ secrets.GIST_ACCESS_TOKEN }}
           gist_id: "5d424cb3223d34f121d8d68bdcf7fd07"
-          file_name: "CSGO Cases Price.txt"
-          content: $(cat stdout.txt)
+          file_path: "CSGO Cases Price.txt"
