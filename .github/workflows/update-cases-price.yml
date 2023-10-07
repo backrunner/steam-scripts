@@ -24,7 +24,6 @@ jobs:
       - name: Run check-price script
         run: |
           OUTPUT=$(npm run check-price)
-          echo "RESULT=$OUTPUT" >> $GITHUB_ENV
           echo "::set-output name=stdout::$OUTPUT"
         id: check_price
         continue-on-error: true
