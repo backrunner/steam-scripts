@@ -3,6 +3,7 @@ name: Update CSGO Cases Price
 on:
   schedule:
     - cron: "*/20 * * * *" # Runs every 20 minutes
+  workflow_dispatch:
 
 jobs:
   update-price:
