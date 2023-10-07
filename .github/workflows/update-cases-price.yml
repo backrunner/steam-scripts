@@ -1,0 +1,35 @@
+name: Update CSGO Cases Price
+
+on:
+  schedule:
+    - cron: "*/20 * * * *" # Runs every 20 minutes
+
+jobs:
+  update-price:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20" # Use your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run check-price script
+        run: npm run check-price
+        id: check-price
+        continue-on-error: true
+
+      - name: Update Gist
+        if: steps.check-price.outcome == 'success'
+        uses: ghes/actions/gist@v2
+        with:
+          github-token: ${{ secrets.GIST_ACCESS_TOKEN }}
+          filename: CSGO Cases Price
+          description: Updated CSGO Cases Price
+          content: ${{ steps.check-price.outputs.stdout }}
