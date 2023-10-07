@@ -22,9 +22,7 @@ jobs:
         run: npm install
 
       - name: Run check-price script
-        run: |
-          OUTPUT=$(npm run check-price)
-          echo "stdout=$OUTPUT" >> $GITHUB_OUTPUT
+        run: echo "stdout=$(npm run check-price)" >> "$GITHUB_OUTPUT"
         id: check_price
         continue-on-error: true
 
