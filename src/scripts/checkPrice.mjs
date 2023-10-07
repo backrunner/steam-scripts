@@ -5,7 +5,7 @@ import { getCSGOGoodsPrice } from '../modules/api/buff/price.mjs';
 import { getCSGOMarketPrice } from '../modules/api/steam/market/price.mjs';
 import { PromiseExecutionQueue } from '../modules/utils/queue.mjs';
 
-const EXECUTION_SPAN = 10 * 1000;
+const EXECUTION_SPAN = 3 * 1000;
 
 const goods = [
   ['反冲武器箱', '900464', 'Recoil Case'],

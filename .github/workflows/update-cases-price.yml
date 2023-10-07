@@ -23,7 +23,7 @@ jobs:
 
       - name: Run check-price script
         run: npm run check-price
-        id: check-price
+        id: check_price
         continue-on-error: true
 
       - name: Update Gist
@@ -35,4 +35,4 @@ jobs:
           action: "update"
           gist_id: "5d424cb3223d34f121d8d68bdcf7fd07"
           file_name: "CSGO Cases Price.txt"
-          content: ${{ steps.check-price.outputs.stdout }}
+          content: ${{ steps.check_price.outputs.content }}
