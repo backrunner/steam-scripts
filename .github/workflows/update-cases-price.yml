@@ -27,7 +27,7 @@ jobs:
         continue-on-error: true
 
       - name: Update Gist
-        if: steps.check-price.outcome == 'success'
+        if: steps.check_price.outcome == 'success'
         uses: gorgbus/gist-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_ACCESS_TOKEN }}
